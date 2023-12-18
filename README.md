@@ -1,3 +1,11 @@
+# BPC Notes: How to make?
+
+```shell
+cd src/
+make libwebman-captcha.so && sudo make install-libwebman-captcha
+sudo ldconfig
+```
+
 Captcha
 =======
 

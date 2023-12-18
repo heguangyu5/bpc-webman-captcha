@@ -504,15 +504,22 @@ class CaptchaBuilder implements CaptchaBuilderInterface
     protected function getFontPath($font)
     {
         static $fontPathMap = [];
-        if (!\class_exists(\Phar::class, false) || !\Phar::running()) {
-            return $font;
+        if (defined('__BPC__')) {
+        } else {
+            if (!\class_exists(\Phar::class, false) || !\Phar::running()) {
+                return $font;
+            }
         }
 
         $tmpPath = sys_get_temp_dir() ?: '/tmp';
         $filePath = "$tmpPath/" . basename($font);
         clearstatcache();
         if (!isset($fontPathMap[$font]) || !is_file($filePath)) {
-            file_put_contents($filePath, file_get_contents($font));
+            if (defined('__BPC__')) {
+                file_put_contents($filePath, resource_get_contents($font));
+            } else {
+                file_put_contents($filePath, file_get_contents($font));
+            }
             $fontPathMap[$font] = $filePath;
         }
         return $fontPathMap[$font];

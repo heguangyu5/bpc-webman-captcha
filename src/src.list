@@ -1,0 +1,11 @@
+CaptchaBuilder.php
+CaptchaBuilderInterface.php
+ImageFileHandler.php
+PhraseBuilder.php
+PhraseBuilderInterface.php
+Font/captcha0.ttf
+Font/captcha1.ttf
+Font/captcha2.ttf
+Font/captcha3.ttf
+Font/captcha4.ttf
+Font/captcha5.ttf
